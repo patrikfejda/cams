@@ -17,7 +17,14 @@
         }
         img {
             width: 100%;
-            height: auto;
+            min-height: 450px;
+            /* height: 600px; Fixed height to prevent layout shifts */
+            object-fit: cover; /* Ensures image covers the specified height and width */
+        }
+        @media (max-width: 768px) {
+            .column {
+                width: 100%; /* Columns stack vertically on mobile */
+            }
         }
     </style>
 </head>
@@ -25,18 +32,18 @@
 <body>
     <div class="container">
         <div class="column">
-            <img src="https://kamery.slovanet.sk/api/13f6nd-d3ea4ccdda669f2e6b82/huge/70.jpg?t=0" />
+            <img src="https://kamery.slovanet.sk/api/13f6nd-d3ea4ccdda669f2e6b82/huge/74.jpg?t=0" />
             <img src="https://kamery.slovanet.sk/api/13f6nd-d3ea4ccdda669f2e6b82/huge/4.jpg?t=0" />
+            <img src="https://kamery.slovanet.sk/api/13f6nd-d3ea4ccdda669f2e6b82/huge/68.jpg?t=0" />
+            <img src="https://kamery.slovanet.sk/api/13f6nd-d3ea4ccdda669f2e6b82/huge/70.jpg?t=0" />
             <img src="https://kamery.slovanet.sk/api/13f6nd-d3ea4ccdda669f2e6b82/huge/5.jpg?t=0" />
-            <img src="https://kamery.slovanet.sk/api/13f6nd-d3ea4ccdda669f2e6b82/huge/6.jpg?t=0" />
-            <img src="https://kamery.slovanet.sk/api/13f6nd-d3ea4ccdda669f2e6b82/huge/11.jpg?t=0" />
-            <img src="https://kamery.slovanet.sk/api/13f6nd-d3ea4ccdda669f2e6b82/huge/9.jpg?t=0" />
+            <!-- <img src="https://kamery.slovanet.sk/api/13f6nd-d3ea4ccdda669f2e6b82/huge/6.jpg?t=0" /> -->
         </div>
         <div class="column">
-            <img src="https://kamery.slovanet.sk/api/13f6nd-d3ea4ccdda669f2e6b82/huge/68.jpg?t=0" />
+            <img src="https://kamery.slovanet.sk/api/13f6nd-d3ea4ccdda669f2e6b82/huge/9.jpg?t=0" />
+            <img src="https://kamery.slovanet.sk/api/13f6nd-d3ea4ccdda669f2e6b82/huge/11.jpg?t=0" />
             <img src="https://kamery.slovanet.sk/api/13f6nd-d3ea4ccdda669f2e6b82/huge/12.jpg?t=0" />
             <img src="https://kamery.slovanet.sk/api/13f6nd-d3ea4ccdda669f2e6b82/huge/35.jpg?t=0" />
-            <img src="https://kamery.slovanet.sk/api/13f6nd-d3ea4ccdda669f2e6b82/huge/74.jpg?t=0" />
             <img src="https://kamery.slovanet.sk/api/13f6nd-d3ea4ccdda669f2e6b82/huge/7.jpg?t=0" />
         </div>
     </div>
@@ -50,7 +57,7 @@
                 img.setAttribute('src', src.replace(/t=\d+/, 't=' + currentTime));
             });
         }
-        setInterval(refresh, 5000);
+        setInterval(refresh, 10000);
     </script>
 </body>
 
