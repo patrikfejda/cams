@@ -6,51 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live cams</title>
     <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
         .column {
             width: 50%;
-            float: left;
             box-sizing: border-box;
+            padding: 5px;
+        }
+        img {
+            width: 100%;
+            height: auto;
         }
     </style>
 </head>
 
 <body>
-    <div class="column">
-        <img src="https://kamery.slovanet.sk/api/13f6ds-1bdc6e8af32fd1404e6a/huge/70.jpg?counter=0" width="100%"
-            height="100%" />
-        <img src="https://kamery.slovanet.sk/api/13f6ds-1bdc6e8af32fd1404e6a/huge/4.jpg?counter=0" width="100%"
-            height="100%" />
-        <img src="https://kamery.slovanet.sk/api/13f6ds-1bdc6e8af32fd1404e6a/huge/5.jpg?counter=0" width="100%"
-            height="100%" />
-        <img src="https://kamery.slovanet.sk/api/13f6ds-1bdc6e8af32fd1404e6a/huge/6.jpg?counter=0" width="100%"
-            height="100%" />
-        <img src="https://kamery.slovanet.sk/api/13f6ds-1bdc6e8af32fd1404e6a/huge/11.jpg?counter=0" width="100%"
-            height="100%" />
-        <img src="https://kamery.slovanet.sk/api/13f6ds-1bdc6e8af32fd1404e6a/huge/9.jpg?counter=0" width="100%"
-            height="100%" />
-    </div>
-    <div class="column">
-        <img src="https://kamery.slovanet.sk/api/13f6ds-1bdc6e8af32fd1404e6a/huge/68.jpg?counter=0" width="100%"
-            height="100%" />
-        <img src="https://kamery.slovanet.sk/api/13f6ds-1bdc6e8af32fd1404e6a/huge/12.jpg?counter=0" width="100%"
-            height="100%" />
-        <img src="https://kamery.slovanet.sk/api/13f6ds-1bdc6e8af32fd1404e6a/huge/35.jpg?counter=0" width="100%"
-            height="100%" />
-        <img src="https://kamery.slovanet.sk/api/13f6ds-1bdc6e8af32fd1404e6a/huge/74.jpg?counter=0" width="100%"
-            height="100%" />
-        <img src="https://kamery.slovanet.sk/api/13f6ds-1bdc6e8af32fd1404e6a/huge/7.jpg?counter=0" width="100%"
-            height="100%" />
+    <div class="container">
+        <div class="column">
+            <img src="https://kamery.slovanet.sk/api/13f6nd-d3ea4ccdda669f2e6b82/huge/70.jpg?t=0" />
+            <img src="https://kamery.slovanet.sk/api/13f6nd-d3ea4ccdda669f2e6b82/huge/4.jpg?t=0" />
+            <img src="https://kamery.slovanet.sk/api/13f6nd-d3ea4ccdda669f2e6b82/huge/5.jpg?t=0" />
+            <img src="https://kamery.slovanet.sk/api/13f6nd-d3ea4ccdda669f2e6b82/huge/6.jpg?t=0" />
+            <img src="https://kamery.slovanet.sk/api/13f6nd-d3ea4ccdda669f2e6b82/huge/11.jpg?t=0" />
+            <img src="https://kamery.slovanet.sk/api/13f6nd-d3ea4ccdda669f2e6b82/huge/9.jpg?t=0" />
+        </div>
+        <div class="column">
+            <img src="https://kamery.slovanet.sk/api/13f6nd-d3ea4ccdda669f2e6b82/huge/68.jpg?t=0" />
+            <img src="https://kamery.slovanet.sk/api/13f6nd-d3ea4ccdda669f2e6b82/huge/12.jpg?t=0" />
+            <img src="https://kamery.slovanet.sk/api/13f6nd-d3ea4ccdda669f2e6b82/huge/35.jpg?t=0" />
+            <img src="https://kamery.slovanet.sk/api/13f6nd-d3ea4ccdda669f2e6b82/huge/74.jpg?t=0" />
+            <img src="https://kamery.slovanet.sk/api/13f6nd-d3ea4ccdda669f2e6b82/huge/7.jpg?t=0" />
+        </div>
     </div>
 
     <script>
-
         const imgs = document.querySelectorAll('img');
         function refresh() {
+            const currentTime = Date.now();
             imgs.forEach(img => {
                 const src = img.getAttribute('src');
-                const counter = src.split('?counter=')[1];
-                const newCounter = parseInt(counter) + 1;
-                img.setAttribute('src', src.split('?counter=')[0] + '?counter=' + newCounter);
+                img.setAttribute('src', src.replace(/t=\d+/, 't=' + currentTime));
             });
         }
         setInterval(refresh, 5000);
